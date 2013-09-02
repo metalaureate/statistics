@@ -1,0 +1,89 @@
+
+# Runs a logistic regression to estimate the fit of different features for people ranker
+# vote outcome model 
+#---------
+# Set up
+#---------
+# Remove old data
+delete_old <- function()
+  rm(list=ls(pos=.GlobalEnv), pos=.GlobalEnv)
+delete_old()
+ls()
+ 
+# Set working directory
+directory_path <- '/Users/shill/documents/R scripts/UnfriendMyself/'
+setwd(directory_path) # set working directory
+getwd() # verify working directory
+
+# Open click datafiles and zip code data (sepate files for zip code data)
+dat <- read.table("model_data_v1.csv", header = TRUE, sep = ",") #  read data
+summary(dat)
+
+
+#--------------
+# Baseline model 
+#---------
+
+M0 <- with(dat, glm(vote ~ 1
+                    , family=binomial("logit")))
+summary(M0)
+M0_likelihood <- with(M0, 
+                      y * log(fitted.values) + (1 - y) * log(1 - fitted.values) ) 
+mean(M0_likelihood)
+
+#--------------
+# Add features 
+#----------------
+# common_friends    common_likes     fid_posts     friend_responses  friend_posts    fid_responses  
+
+M1 <- with(dat, glm(vote ~  (friend_responses/fid_posts) + (fid_responses/friend_posts) + common_friends + common_likes +friend_posts
+                    , family=binomial("logit")))
+summary(M1)
+M1_likelihood <- with(M1, 
+                      y * log(fitted.values) + (1 - y) * log(1 - fitted.values) ) 
+mean(M1_likelihood)
+
+#--------------
+# Inspect features
+#----------------
+
+par(mfrow = c(2, 2))
+
+# Plot Effect of Common Friends
+
+# for each common_friend, probability of liking vs not liking
+temp1 <- table(round(dat$common_friends, 1), dat$vote)
+prob_data <- temp1[,2] / (temp1[,1] + temp1[,2])
+plot(as.numeric(rownames(temp1)), prob_data, type = "p", ylab = "probability of unfriending", xlab = "# of common friends",
+     main = "Probability of Common Friends", ylim = c(0.00, 1), xlim = c(0, 10))
+lines(prob_data ~ as.numeric(rownames(temp1)))
+
+
+# Plot effect of Common Likes
+
+temp2 <- table(round(dat$common_likes), dat$vote)
+prob_data <- temp2[,2] / (temp2[,1] + temp2[,2])
+plot(as.numeric(rownames(temp2)), prob_data, type = "p", ylab = "probability of unfriending", xlab = "# Common Likes",
+     main = "Probability of Common Likes", ylim = c(0.00, 1), xlim = c(0, 10))
+lines(prob_data ~ as.numeric(rownames(temp2)))
+
+# Plot Effect of Friend Responses to Voter
+temp4 <- table(round(dat$friend_responses), dat$vote)
+prob_data <- temp4[,2] / (temp4[,1] + temp4[,2])
+plot(as.numeric(rownames(temp4)), prob_data, type = "p", ylab = "probability of unfriending", xlab = "# Friend Responses",
+     main = "Probability of Friend Responses", ylim = c(0.00, 1), xlim = c(0, 10))
+lines(prob_data ~ as.numeric(rownames(temp4)))
+
+# Plot Effect of User Responses
+temp5 <- table(round(dat$fid_responses), dat$vote)
+prob_data <- temp5[,2] / (temp5[,1] + temp5[,2])
+plot(as.numeric(rownames(temp5)), prob_data, type = "p", ylab = "probability of unfriending", xlab = "# Voter Responses",
+     main = "Probability of User Responses", ylim = c(0.00, 1), xlim = c(0, 10))
+lines(prob_data ~ as.numeric(rownames(temp5)))
+
+# Plot Effect of # Friend Posts
+temp6 <- table(round(dat$friend_posts), dat$vote)
+prob_data <- temp6[,2] / (temp6[,1] + temp6[,2])
+plot(as.numeric(rownames(temp6)), prob_data, type = "p", ylab = "probability of unfriending", xlab = "# Friend Posts",
+     main = "Probability of # Friend Posts", ylim = c(0.00, 1), xlim = c(0, 10))
+lines(prob_data ~ as.numeric(rownames(temp6)))

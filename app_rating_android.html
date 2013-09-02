@@ -1,0 +1,2339 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>app_rating_android.r</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<!-- Automatically generated by RStudio [12861c30b10411e1afa60800200c9a66] -->
+
+<h3>app_rating_android.r</h3>
+
+<p>shill &mdash; <em>May 7, 2013, 10:09 AM</em></p>
+
+<pre><code class="r">### This file has a series of utility functions, followed by the solution to ticket 24257 ###
+### Annotated by a bunch of asterisks ###
+### By Erik Gregory ###
+### 2013-04-11 ###
+
+library(multicore)
+require(RPostgreSQL)
+</code></pre>
+
+<pre><code>Loading required package: RPostgreSQL
+</code></pre>
+
+<pre><code>Warning: package &#39;RPostgreSQL&#39; was built under R version 2.15.3
+</code></pre>
+
+<pre><code>Loading required package: DBI
+</code></pre>
+
+<pre><code class="r">library(chron)
+library(plyr)
+library(forecast)
+</code></pre>
+
+<pre><code>Warning: package &#39;forecast&#39; was built under R version 2.15.3
+</code></pre>
+
+<pre><code>This is forecast 4.03
+</code></pre>
+
+<pre><code class="r">library(inline)
+#&#39; @param user your username for the greenplum database
+#&#39; @param password your password
+#&#39; @param dbnam, default &quot;prod&quot;
+#&#39; @param host default &quot;gp.tagged.com&quot;
+#&#39; @param port port of the database on the host
+#&#39; @param driver the type of database driver to use
+makeCxn &lt;- function(user = &quot;egregory&quot;, password = &quot;egregory&quot;,
+                    dbname = &quot;prod&quot;, host = &quot;gp.tagged.com&quot;, 
+                    port = 5432, driver = &quot;PostgreSQL&quot;) {
+  drv &lt;- dbDriver(driver)
+  cxn &lt;- dbConnect(drv, user = user, password = password,
+                   dbname = dbname, host = host, port = port)
+  cxn
+}
+
+#&#39;@author Rober McGehee
+#&#39;@source https://stat.ethz.ch/pipermail/r-sig-db/2010q3/000868.html
+dbInsert &lt;- function(con, name, value, row.names = TRUE, ...) {
+  xx &lt;- dbSendQuery(con, paste(&quot;select * from&quot;, name, &quot;LIMIT 1;&quot;))
+  cols &lt;- dbColumnInfo(xx)$name
+  dbClearResult(xx)
+  if (row.names) {
+    if (!&quot;row_names&quot; %in% cols) stop(&quot;row_names column missing from
+                                     &quot;, sQuote(name))
+    value[[&quot;row_names&quot;, exact=TRUE]] &lt;- rownames(value)
+  }
+  if (length(setdiff(names(value), cols)))
+    stop(&quot;names of &#39;value&#39; do not match columns of &quot;, sQuote(name))
+
+  cdt  &lt;- which(sapply(value, inherits, c(&quot;Date&quot;, &quot;POSIXt&quot;)))
+  ctxt &lt;- which(sapply(value, postgresqlDataType)==&quot;text&quot;)
+  for (i in cdt)
+    value[[i]] &lt;- ifelse(is.na(value[[i]]), &quot;NULL&quot;,
+                         sQuote(format(value[[i]])))
+  for (i in setdiff(ctxt, cdt))
+    value[[i]] &lt;- ifelse(is.na(value[[i]]), &quot;NULL&quot;,
+                         sQuote(value[[i]]))
+
+  m &lt;- as.matrix(value)
+  class(m) &lt;- &quot;character&quot;
+  m[is.na(m)] &lt;- &quot;NULL&quot;
+
+  q1 &lt;- paste(&quot;BEGIN; INSERT INTO&quot;, name, &quot;(&quot;, paste(names(value),
+                                                     collapse=&quot;, &quot;), &quot;) VALUES&quot;)
+  q2 &lt;- apply(m, 1, function(x) paste(&quot;(&quot;, paste(x, collapse=&quot;,&quot;),
+                                      &quot;)&quot;, sep=&quot;&quot;))
+  q3 &lt;- &quot;; COMMIT;&quot;
+  qry &lt;- paste(q1, paste(q2, collapse=&quot;,&quot;), q3)
+  dbGetQuery(con, qry)
+}
+
+#&#39; @param query the query you want to make to the SQL connection you&#39;ve specified
+#&#39; @param user your username for the greenplum database
+#&#39; @param password your password
+#&#39; @param dbnam, default &quot;prod&quot;
+#&#39; @param host default &quot;gp.tagged.com&quot;
+#&#39; @param port port of the database on the host
+#&#39; @param driver the type of database driver to use
+fetchQuery &lt;- function(query, user = &quot;egregory&quot;, password = &quot;egregory&quot;,
+                       dbname = &quot;prod&quot;, host = &quot;gp.tagged.com&quot;, 
+                       port = 5432, n = -1, verbose = TRUE) {
+  res &lt;- NA
+  cxn &lt;- makeCxn(user = user, password = password,
+                 dbname = dbname, host = host, port = port)
+  t1 &lt;- Sys.time()
+  tmp &lt;- try(dbSendQuery(cxn, query))
+  if (!(&#39;try-error&#39; %in% class(tmp))) {
+    res &lt;- try(fetch(tmp, n))
+    if (verbose) {
+      print(Sys.time() - t1)
+      print(dim(res))
+    }
+  }
+  dbDisconnect(cxn)
+  res
+}
+
+#&#39;@example {
+#&#39;a &lt;- &quot;CREATE TABLE sandbox.test_r_insert(user_id numeric(15, 0), dt date)&quot;
+#&#39;tst &lt;- fetchQuery(a)
+#&#39;datas &lt;- data.frame(user_id = 0:10, dt = seq(as.Date(&#39;2012-01-01&#39;), as.Date(&#39;2012-01-10&#39;), &quot;days&quot;))}
+insertData &lt;- function(name, value, user = &quot;egregory&quot;, password = &quot;egregory&quot;,
+                       dbname = &quot;prod&quot;, host = &quot;gp.tagged.com&quot;, 
+                       port = 5432, n = -1, verbose = TRUE) {
+  cxn &lt;- makeCxn(user = user, password = password,
+                 dbname = dbname, host = host, port = port)
+  t1 &lt;- Sys.time()
+  res &lt;- try(dbWriteTable(conn = cxn, name = name, value = value, row.names = FALSE, overwrite = TRUE))
+  if (verbose) {
+    print(Sys.time() - t1)
+    print(dim(res))
+  }
+  dbDisconnect(cxn)
+  res
+}
+getTables &lt;- function(user = &quot;egregory&quot;, password = &quot;egregory&quot;,
+                      dbname = &quot;prod&quot;, host = &quot;gp.tagged.com&quot;, 
+                      port = 5432) {
+  a &lt;- makeCxn(user = user, password = password,
+               dbname = dbname, host = host, port = port)
+  tbls &lt;- dbListTables(a)
+  dbDisconnect(a)
+  tbls
+}
+getFields &lt;- function(tables, user = &quot;egregory&quot;, password = &quot;egregory&quot;,
+                      dbname = &quot;prod&quot;, host = &quot;gp.tagged.com&quot;, 
+                      port = 5432) {
+  a &lt;- makeCxn(user = user, password = password,
+               dbname = dbname, host = host, port = port)
+  tbls &lt;- lapply(tables, function(i) try(dbListFields(a, i)))
+  names(tbls) &lt;- tables
+  dbDisconnect(a)
+  tbls
+}
+
+searchTables &lt;- function(str) {
+  all.tbls[grep(str, all.tbls)]
+}
+
+searchTbls &lt;- function(str) {
+  tbls[grep(str, tbls)]
+}
+
+queryByDateRange &lt;- function(query, min.date = as.character(Sys.Date() - 1), max.date = NULL) {
+  if (is.null(max.date)) {
+    max.date &lt;- min.date
+  }
+  dates &lt;- as.character(seq(as.Date(min.date), as.Date(max.date) + 1, &#39;day&#39;))
+  N &lt;- length(dates)
+  res &lt;- list()
+  for (i in 1:(N - 1)) {
+    str.start &lt;- paste(&quot;DATE(&#39;&quot;, dates[i], &quot;&#39;) &quot;, sep = &quot;&quot;)
+    str.end &lt;- paste(&quot;DATE(&#39;&quot;, dates[i + 1], &quot;&#39;) &quot;, sep = &quot;&quot;)
+    tmp.query &lt;- gsub(&quot;:start_date&quot;, str.start, query, fixed = TRUE)
+    tmp.query &lt;- gsub(&quot;:end_date&quot;, str.end, tmp.query, fixed = TRUE)
+    cat(tmp.query)
+    res[[dates[i]]] &lt;- fetchQuery(tmp.query)
+  }
+  res
+}
+
+addColumns &lt;- function(df, outlier.thresh = 0.10, time.unit = &quot;mins&quot;, min_dt = NULL) {
+  if (!(&quot;POSIXct&quot; %in% class(df$dt))) {
+    df$dt &lt;- as.POSIXct(df$dt)
+  }
+  df$weekday &lt;- factor(weekdays(df$dt))
+  df$minute &lt;- factor(minutes(df$dt))
+  df$hour &lt;- factor((hours(df$dt) - 8) %% 24)
+  df$minute_of_day &lt;- factor(as.numeric(as.character(df$hour))*60 + as.numeric(as.character(df$minute)))
+  df &lt;- df[order(df$dt), ]
+  if (df$dt[1] - df$dt[2] == structure(-1, tzone = &quot;&quot;, units = &quot;mins&quot;, class = &quot;difftime&quot;)) {
+    if (&quot;median.value&quot; %in% names(df)) { # If we already have median values
+
+    }
+    df &lt;- ddply(df, c(&#39;weekday&#39;, &#39;hour&#39;, &#39;minute&#39;), transform,
+                median.value = median(value)) # Add medians for each weekday/minute combo
+  }
+  else {
+    df &lt;- ddply(df, c(&#39;weekday&#39;, &#39;hour&#39;), transform,
+                median.value = median(value)) # Add medians for each weekday/hour combo
+  }
+  df &lt;- transform(df, dev = (value - median.value)/median.value)
+  df$outlier &lt;- ifelse(abs(df$dev) &gt; outlier.thresh, TRUE, FALSE)
+  if (is.null(min_dt)) {
+    min_dt &lt;- min(df$dt)
+  }
+  df$time_id &lt;- round(difftime(df$dt, min_dt, unit = time.unit))
+  df &lt;- df[order(df$dt), ]
+  df
+}
+# Oracle port number 1521
+# dbname taganalysis
+# user taganalysis
+# password $taganalysis$
+# host 10.15.40.120
+# ana_metrics table
+all.tbls &lt;- getTables()
+tbls &lt;- gsub(&#39;[0-9]+&#39;, &#39;&#39;, all.tbls)
+tbls &lt;- unique(tbls)
+
+####### Ticket 24257 ######
+
+# Bottom and top bounds on your time period of interest in which you want to look at user behavior
+min_date &lt;- &quot;2013-04-21&quot;
+max_date &lt;- &quot;2013-04-27&quot;
+days_back &lt;- 14 # Time period previous to the days above in which you want to consider android user messaging behavior
+min_messages_sent &lt;- 10 # Number of messages the user must have sent in the defined time period
+min_messages_received &lt;- 5 # Number of messages the user must have received in the defined time period
+min_days_messages_sent &lt;- 5 # Number of days the user must have sent at least one message during the defined time period
+
+
+bottom_date &lt;- as.character(as.Date(min_date) - days_back) # The absolute minimum date we want to pull users from
+
+# Get user_ids of people who used android during the week of interest.
+query.drop.android_uid &lt;- &quot;DROP TABLE IF EXISTS sandbox.android_uid&quot;
+fetchQuery(query.drop.android_uid) # Make sure there is a place to store android uids
+</code></pre>
+
+<pre><code>Time difference of 0.006033 secs
+NULL
+</code></pre>
+
+<pre><code>[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">query.create.android_uid &lt;- &quot;CREATE TABLE sandbox.android_uid (
+                             user_id numeric(15, 0)
+                            )&quot;
+fetchQuery(query.create.android_uid) # Create table
+</code></pre>
+
+<pre><code>Time difference of 1.508 secs
+NULL
+</code></pre>
+
+<pre><code>[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">
+query.insert.android_uid &lt;- &quot;INSERT INTO sandbox.android_uid
+                            SELECT DISTINCT m.user_id
+                            FROM mobile_api_log m
+                            WHERE (m.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                              OR m.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                              OR m.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Remove all Android UAs
+                              AND m.dt &gt;= :start_date
+                              AND m.dt &lt; :end_date
+                              AND NOT EXISTS (
+                                SELECT 1 FROM sandbox.android_uid siu
+                                WHERE siu.user_id = m.user_id
+                              ) -- avoid adding duplicate entries 
+                           AND (m.mobile_type LIKE &#39;%Tagged%&#39;
+                           OR m.mobile_type LIKE &#39;%Hi5%&#39;) -- UAs for mobile applications&quot;
+# More efficient: Left outer join to make sure uid does not already exist
+# LEFT OUTER JOIN sandbox.android_uid WHERE alias.user_id is null
+
+queryByDateRange(query.insert.android_uid, min_date, max_date) # Fill Table
+</code></pre>
+
+<pre><code>INSERT INTO sandbox.android_uid
+                            SELECT DISTINCT m.user_id
+                            FROM mobile_api_log m
+                            WHERE (m.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                              OR m.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                              OR m.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Remove all Android UAs
+                              AND m.dt &gt;= DATE(&#39;2013-04-21&#39;) 
+                              AND m.dt &lt; DATE(&#39;2013-04-22&#39;) 
+                              AND NOT EXISTS (
+                                SELECT 1 FROM sandbox.android_uid siu
+                                WHERE siu.user_id = m.user_id
+                              ) -- avoid adding duplicate entries 
+                           AND (m.mobile_type LIKE &#39;%Tagged%&#39;
+                           OR m.mobile_type LIKE &#39;%Hi5%&#39;) -- UAs for mobile applicationsTime difference of 25.4 secs
+NULL
+INSERT INTO sandbox.android_uid
+                            SELECT DISTINCT m.user_id
+                            FROM mobile_api_log m
+                            WHERE (m.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                              OR m.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                              OR m.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Remove all Android UAs
+                              AND m.dt &gt;= DATE(&#39;2013-04-22&#39;) 
+                              AND m.dt &lt; DATE(&#39;2013-04-23&#39;) 
+                              AND NOT EXISTS (
+                                SELECT 1 FROM sandbox.android_uid siu
+                                WHERE siu.user_id = m.user_id
+                              ) -- avoid adding duplicate entries 
+                           AND (m.mobile_type LIKE &#39;%Tagged%&#39;
+                           OR m.mobile_type LIKE &#39;%Hi5%&#39;) -- UAs for mobile applicationsTime difference of 22.4 secs
+NULL
+INSERT INTO sandbox.android_uid
+                            SELECT DISTINCT m.user_id
+                            FROM mobile_api_log m
+                            WHERE (m.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                              OR m.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                              OR m.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Remove all Android UAs
+                              AND m.dt &gt;= DATE(&#39;2013-04-23&#39;) 
+                              AND m.dt &lt; DATE(&#39;2013-04-24&#39;) 
+                              AND NOT EXISTS (
+                                SELECT 1 FROM sandbox.android_uid siu
+                                WHERE siu.user_id = m.user_id
+                              ) -- avoid adding duplicate entries 
+                           AND (m.mobile_type LIKE &#39;%Tagged%&#39;
+                           OR m.mobile_type LIKE &#39;%Hi5%&#39;) -- UAs for mobile applicationsTime difference of 13.94 secs
+NULL
+INSERT INTO sandbox.android_uid
+                            SELECT DISTINCT m.user_id
+                            FROM mobile_api_log m
+                            WHERE (m.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                              OR m.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                              OR m.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Remove all Android UAs
+                              AND m.dt &gt;= DATE(&#39;2013-04-24&#39;) 
+                              AND m.dt &lt; DATE(&#39;2013-04-25&#39;) 
+                              AND NOT EXISTS (
+                                SELECT 1 FROM sandbox.android_uid siu
+                                WHERE siu.user_id = m.user_id
+                              ) -- avoid adding duplicate entries 
+                           AND (m.mobile_type LIKE &#39;%Tagged%&#39;
+                           OR m.mobile_type LIKE &#39;%Hi5%&#39;) -- UAs for mobile applicationsTime difference of 11.05 secs
+NULL
+INSERT INTO sandbox.android_uid
+                            SELECT DISTINCT m.user_id
+                            FROM mobile_api_log m
+                            WHERE (m.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                              OR m.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                              OR m.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Remove all Android UAs
+                              AND m.dt &gt;= DATE(&#39;2013-04-25&#39;) 
+                              AND m.dt &lt; DATE(&#39;2013-04-26&#39;) 
+                              AND NOT EXISTS (
+                                SELECT 1 FROM sandbox.android_uid siu
+                                WHERE siu.user_id = m.user_id
+                              ) -- avoid adding duplicate entries 
+                           AND (m.mobile_type LIKE &#39;%Tagged%&#39;
+                           OR m.mobile_type LIKE &#39;%Hi5%&#39;) -- UAs for mobile applicationsTime difference of 25.04 secs
+NULL
+INSERT INTO sandbox.android_uid
+                            SELECT DISTINCT m.user_id
+                            FROM mobile_api_log m
+                            WHERE (m.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                              OR m.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                              OR m.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Remove all Android UAs
+                              AND m.dt &gt;= DATE(&#39;2013-04-26&#39;) 
+                              AND m.dt &lt; DATE(&#39;2013-04-27&#39;) 
+                              AND NOT EXISTS (
+                                SELECT 1 FROM sandbox.android_uid siu
+                                WHERE siu.user_id = m.user_id
+                              ) -- avoid adding duplicate entries 
+                           AND (m.mobile_type LIKE &#39;%Tagged%&#39;
+                           OR m.mobile_type LIKE &#39;%Hi5%&#39;) -- UAs for mobile applicationsTime difference of 18.97 secs
+NULL
+INSERT INTO sandbox.android_uid
+                            SELECT DISTINCT m.user_id
+                            FROM mobile_api_log m
+                            WHERE (m.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                              OR m.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                              OR m.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Remove all Android UAs
+                              AND m.dt &gt;= DATE(&#39;2013-04-27&#39;) 
+                              AND m.dt &lt; DATE(&#39;2013-04-28&#39;) 
+                              AND NOT EXISTS (
+                                SELECT 1 FROM sandbox.android_uid siu
+                                WHERE siu.user_id = m.user_id
+                              ) -- avoid adding duplicate entries 
+                           AND (m.mobile_type LIKE &#39;%Tagged%&#39;
+                           OR m.mobile_type LIKE &#39;%Hi5%&#39;) -- UAs for mobile applicationsTime difference of 21.01 secs
+NULL
+</code></pre>
+
+<pre><code>$`2013-04-21`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-22`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-23`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-24`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-25`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-26`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-27`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">
+
+# Get all android app session ids, within days_back days, of the users who used the android app during the sample week
+query.drop.android_app_sessions &lt;- &quot;DROP TABLE IF EXISTS sandbox.android_app_sessions&quot;
+fetchQuery(query.drop.android_app_sessions)
+</code></pre>
+
+<pre><code>Time difference of 0.004574 secs
+NULL
+</code></pre>
+
+<pre><code>[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">query.create.android_app_sessions &lt;- &quot;CREATE TABLE sandbox.android_app_sessions (
+                                      session_id varchar(32)
+                                    )&quot;
+fetchQuery(query.create.android_app_sessions) # Create table
+</code></pre>
+
+<pre><code>Time difference of 5.138 secs
+NULL
+</code></pre>
+
+<pre><code>[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">
+query.insert.android_app_sessions &lt;- &quot;INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= :start_date
+                                      AND l.dt &lt; :end_date
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rows&quot;
+queryByDateRange(query.insert.android_app_sessions, bottom_date, max_date) # populate table
+</code></pre>
+
+<pre><code>INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-07&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-08&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 19.16 secs
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-08&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-09&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 29.11 secs
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-09&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-10&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 30.17 secs
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-10&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-11&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 45.78 secs
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-11&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-12&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 1.127 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-12&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-13&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 25.15 secs
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-13&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-14&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 39.61 secs
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-14&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-15&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 1.812 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-15&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-16&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 2.635 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-16&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-17&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 2.476 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-17&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-18&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 3.42 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-18&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-19&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 2.805 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-19&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-20&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 2.379 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-20&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-21&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 2.313 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-21&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-22&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 3.327 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-22&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-23&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 3.215 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-23&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-24&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 3.504 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-24&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-25&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 4.37 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-25&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-26&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 2.973 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-26&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-27&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 3.607 mins
+NULL
+INSERT INTO sandbox.android_app_sessions
+                                     SELECT DISTINCT l.session_id
+                                     FROM mobile_api_log l, sandbox.android_uid iu
+                                     WHERE iu.user_id = l.user_id -- We only care about known android users during the week in question
+                                      AND  l.dt &gt;= DATE(&#39;2013-04-27&#39;) 
+                                      AND l.dt &lt; DATE(&#39;2013-04-28&#39;) 
+                                      AND (l.mobile_type LIKE &#39;Tagged/%/an%&#39; 
+                                        OR l.mobile_type LIKE &#39;Hi5/%/an%&#39; 
+                                        OR l.mobile_type = &#39;Tagged/2.0+CFNetwork/459 Darwin/10.0.0d3&#39;) -- Not android user
+                                      AND (l.mobile_type LIKE &#39;%Tagged%&#39;
+                                        OR l.mobile_type LIKE &#39;%Hi5%&#39;) -- is mobile app user
+                                      AND l.session_id NOT IN (
+                                        SELECT session_id FROM sandbox.android_app_sessions
+                                      ) -- avoid duplicate rowsTime difference of 3.031 mins
+NULL
+</code></pre>
+
+<pre><code>$`2013-04-07`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-08`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-09`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-10`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-11`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-12`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-13`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-14`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-15`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-16`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-17`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-18`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-19`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-20`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-21`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-22`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-23`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-24`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-25`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-26`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-27`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">
+# Count users 
+query.count.android_uid &lt;- &quot;SELECT COUNT(user_id) 
+                           FROM sandbox.android_uid&quot;
+count.android_uid &lt;- fetchQuery(query.count.android_uid)$count # Count the number of users who used android in the input time period
+</code></pre>
+
+<pre><code>Time difference of 1.346 secs
+[1] 1 1
+</code></pre>
+
+<pre><code class="r">print(count.android_uid)
+</code></pre>
+
+<pre><code>[1] 825805
+</code></pre>
+
+<pre><code class="r">
+# Keep track of the messages sent, by day, by android user who was active during the sample time period
+query.drop.daily_messages_sent &lt;- &quot;DROP TABLE IF EXISTS sandbox.daily_messages_sent&quot;
+fetchQuery(query.drop.daily_messages_sent) # Drop old table
+</code></pre>
+
+<pre><code>Time difference of 3.693 secs
+NULL
+</code></pre>
+
+<pre><code>[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">query.create.daily_messages_sent &lt;- &quot;CREATE TABLE sandbox.daily_messages_sent (
+                                      user_id numeric(15, 0),
+                                      messages_sent numeric(8, 0),
+                                      dt date
+                                     )&quot;
+fetchQuery(query.create.daily_messages_sent) # Create table
+</code></pre>
+
+<pre><code>Time difference of 2.167 secs
+NULL
+</code></pre>
+
+<pre><code>[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">
+query.insert.daily_messages_sent &lt;- &quot;INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= :start_date
+                                      AND ml.dt &lt; :end_date
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)&quot;
+queryByDateRange(query.insert.daily_messages_sent, bottom_date, max_date) # Fill table
+</code></pre>
+
+<pre><code>INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-07&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-08&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 10.12 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-08&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-09&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 11.51 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-09&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-10&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 11.85 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-10&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-11&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 11.22 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-11&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-12&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 12.66 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-12&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-13&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 11.38 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-13&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-14&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 8.529 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-14&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-15&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 19.01 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-15&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-16&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 15.87 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-16&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-17&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 14.77 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-17&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-18&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 6.712 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-18&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-19&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 11.89 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-19&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-20&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 10.47 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-20&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-21&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 9.066 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-21&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-22&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 7.559 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-22&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-23&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 9.423 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-23&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-24&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 12.44 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-24&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-25&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 14.28 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-25&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-26&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 24.73 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-26&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-27&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 8.982 secs
+NULL
+INSERT INTO sandbox.daily_messages_sent
+                                     SELECT ml.from_user_id as user_id, COUNT(DISTINCT ml.msg_id) as messages_sent, 
+                                      DATE(ml.dt) as dt
+                                     FROM message_log ml, sandbox.android_app_sessions ias
+                                     WHERE ias.session_id = ml.session_id -- Must be an android app session, as pre-determined
+                                      AND ml.sub_type = &#39;send&#39; -- has to be a message the user sent
+                                      AND ml.dt &gt;= DATE(&#39;2013-04-27&#39;) 
+                                      AND ml.dt &lt; DATE(&#39;2013-04-28&#39;) 
+                                     GROUP BY ml.from_user_id, DATE(ml.dt)Time difference of 10.16 secs
+NULL
+</code></pre>
+
+<pre><code>$`2013-04-07`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-08`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-09`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-10`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-11`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-12`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-13`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-14`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-15`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-16`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-17`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-18`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-19`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-20`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-21`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-22`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-23`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-24`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-25`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-26`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-27`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">
+
+# Daily messages received, by android user, by day, for android users active during the sample time period
+query.drop.daily_messages_received &lt;- &quot;DROP TABLE IF EXISTS sandbox.daily_messages_received&quot;
+fetchQuery(query.drop.daily_messages_received) # Drop table
+</code></pre>
+
+<pre><code>Time difference of 0.8134 secs
+NULL
+</code></pre>
+
+<pre><code>[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">query.create.daily_messages_received &lt;- &quot;CREATE TABLE sandbox.daily_messages_received (
+                                      user_id numeric(15, 0),
+                                      messages_received numeric(8, 0),
+                                      dt date
+                                     )&quot;
+fetchQuery(query.create.daily_messages_received) # Create new version of table
+</code></pre>
+
+<pre><code>Time difference of 1.525 secs
+NULL
+</code></pre>
+
+<pre><code>[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">
+query.insert.daily_messages_received &lt;- &quot;INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= :start_date
+                                         AND ml.dt &lt; :end_date
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         &quot;
+queryByDateRange(query.insert.daily_messages_received, bottom_date, max_date) # Fill table
+</code></pre>
+
+<pre><code>INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-07&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-08&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 17.75 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-08&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-09&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 9.047 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-09&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-10&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 8.891 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-10&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-11&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 4.435 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-11&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-12&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 11.36 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-12&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-13&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 9.741 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-13&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-14&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 15.47 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-14&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-15&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 11.18 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-15&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-16&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 13.69 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-16&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-17&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 17.73 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-17&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-18&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 10.82 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-18&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-19&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 11.2 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-19&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-20&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 11.56 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-20&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-21&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 8.952 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-21&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-22&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 12.78 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-22&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-23&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 12.57 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-23&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-24&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 8.403 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-24&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-25&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 10.28 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-25&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-26&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 16.73 secs
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-26&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-27&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 4.405 mins
+NULL
+INSERT INTO sandbox.daily_messages_received
+                                         SELECT ml.to_user_id as user_id, COUNT(DISTINCT ml.msg_id) AS messages_received,
+                                         DATE(ml.dt) AS dt
+                                         FROM message_log ml, sandbox.android_app_sessions ias
+                                         WHERE ias.session_id = ml.session_id
+                                         AND ml.sub_type = &#39;deliver&#39;
+                                         AND ml.dt &gt;= DATE(&#39;2013-04-27&#39;) 
+                                         AND ml.dt &lt; DATE(&#39;2013-04-28&#39;) 
+                                         GROUP BY ml.to_user_id, DATE(ml.dt)
+                                         Time difference of 16.87 secs
+NULL
+</code></pre>
+
+<pre><code>$`2013-04-07`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-08`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-09`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-10`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-11`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-12`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-13`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-14`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-15`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-16`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-17`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-18`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-19`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-20`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-21`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-22`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-23`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-24`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-25`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-26`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+
+$`2013-04-27`
+[1] &quot;Error in postgresqlFetch(res, n, ...) : \n  RS-DBI driver: (resultSet does not correspond to a SELECT statement)\n&quot;
+attr(,&quot;class&quot;)
+[1] &quot;try-error&quot;
+attr(,&quot;condition&quot;)
+&lt;simpleError in postgresqlFetch(res, n, ...): RS-DBI driver: (resultSet does not correspond to a SELECT statement)&gt;
+</code></pre>
+
+<pre><code class="r">
+# Get daily messages sent
+query.get.daily_messages_sent &lt;- &quot;SELECT b.user_id, udl.cancel_reason_code,
+                                  SUM(dms.messages_sent) as total_messages_sent,
+                                  b.total_messages_received,
+                                  COUNT(dms.dt) AS days_messaged
+                                  FROM (SELECT dmr.user_id, SUM(dmr.messages_received) as total_messages_received
+                                        FROM sandbox.daily_messages_received dmr
+                                        WHERE dmr.dt &lt;= :start_date
+                                        AND dmr.dt &gt; :start_date - integer &#39;14&#39;
+                                        GROUP BY dmr.user_id) b
+                                  INNER JOIN sandbox.daily_messages_sent dms
+                                    ON dms.user_id = b.user_id
+                                  INNER JOIN userdata_light udl
+                                    ON udl.user_id = b.user_id
+                                  WHERE dms.dt &lt;= :start_date
+                                  AND dms.dt &gt; :start_date - integer &#39;14&#39;
+                                  GROUP BY b.user_id, udl.cancel_reason_code, b.total_messages_received&quot;
+dms &lt;- queryByDateRange(query.get.daily_messages_sent, min_date, max_date)
+</code></pre>
+
+<pre><code>SELECT b.user_id, udl.cancel_reason_code,
+                                  SUM(dms.messages_sent) as total_messages_sent,
+                                  b.total_messages_received,
+                                  COUNT(dms.dt) AS days_messaged
+                                  FROM (SELECT dmr.user_id, SUM(dmr.messages_received) as total_messages_received
+                                        FROM sandbox.daily_messages_received dmr
+                                        WHERE dmr.dt &lt;= DATE(&#39;2013-04-21&#39;) 
+                                        AND dmr.dt &gt; DATE(&#39;2013-04-21&#39;)  - integer &#39;14&#39;
+                                        GROUP BY dmr.user_id) b
+                                  INNER JOIN sandbox.daily_messages_sent dms
+                                    ON dms.user_id = b.user_id
+                                  INNER JOIN userdata_light udl
+                                    ON udl.user_id = b.user_id
+                                  WHERE dms.dt &lt;= DATE(&#39;2013-04-21&#39;) 
+                                  AND dms.dt &gt; DATE(&#39;2013-04-21&#39;)  - integer &#39;14&#39;
+                                  GROUP BY b.user_id, udl.cancel_reason_code, b.total_messages_receivedTime difference of 19.73 secs
+[1] 401955      5
+SELECT b.user_id, udl.cancel_reason_code,
+                                  SUM(dms.messages_sent) as total_messages_sent,
+                                  b.total_messages_received,
+                                  COUNT(dms.dt) AS days_messaged
+                                  FROM (SELECT dmr.user_id, SUM(dmr.messages_received) as total_messages_received
+                                        FROM sandbox.daily_messages_received dmr
+                                        WHERE dmr.dt &lt;= DATE(&#39;2013-04-22&#39;) 
+                                        AND dmr.dt &gt; DATE(&#39;2013-04-22&#39;)  - integer &#39;14&#39;
+                                        GROUP BY dmr.user_id) b
+                                  INNER JOIN sandbox.daily_messages_sent dms
+                                    ON dms.user_id = b.user_id
+                                  INNER JOIN userdata_light udl
+                                    ON udl.user_id = b.user_id
+                                  WHERE dms.dt &lt;= DATE(&#39;2013-04-22&#39;) 
+                                  AND dms.dt &gt; DATE(&#39;2013-04-22&#39;)  - integer &#39;14&#39;
+                                  GROUP BY b.user_id, udl.cancel_reason_code, b.total_messages_receivedTime difference of 5.959 secs
+[1] 410717      5
+SELECT b.user_id, udl.cancel_reason_code,
+                                  SUM(dms.messages_sent) as total_messages_sent,
+                                  b.total_messages_received,
+                                  COUNT(dms.dt) AS days_messaged
+                                  FROM (SELECT dmr.user_id, SUM(dmr.messages_received) as total_messages_received
+                                        FROM sandbox.daily_messages_received dmr
+                                        WHERE dmr.dt &lt;= DATE(&#39;2013-04-23&#39;) 
+                                        AND dmr.dt &gt; DATE(&#39;2013-04-23&#39;)  - integer &#39;14&#39;
+                                        GROUP BY dmr.user_id) b
+                                  INNER JOIN sandbox.daily_messages_sent dms
+                                    ON dms.user_id = b.user_id
+                                  INNER JOIN userdata_light udl
+                                    ON udl.user_id = b.user_id
+                                  WHERE dms.dt &lt;= DATE(&#39;2013-04-23&#39;) 
+                                  AND dms.dt &gt; DATE(&#39;2013-04-23&#39;)  - integer &#39;14&#39;
+                                  GROUP BY b.user_id, udl.cancel_reason_code, b.total_messages_receivedTime difference of 5.479 secs
+[1] 418037      5
+SELECT b.user_id, udl.cancel_reason_code,
+                                  SUM(dms.messages_sent) as total_messages_sent,
+                                  b.total_messages_received,
+                                  COUNT(dms.dt) AS days_messaged
+                                  FROM (SELECT dmr.user_id, SUM(dmr.messages_received) as total_messages_received
+                                        FROM sandbox.daily_messages_received dmr
+                                        WHERE dmr.dt &lt;= DATE(&#39;2013-04-24&#39;) 
+                                        AND dmr.dt &gt; DATE(&#39;2013-04-24&#39;)  - integer &#39;14&#39;
+                                        GROUP BY dmr.user_id) b
+                                  INNER JOIN sandbox.daily_messages_sent dms
+                                    ON dms.user_id = b.user_id
+                                  INNER JOIN userdata_light udl
+                                    ON udl.user_id = b.user_id
+                                  WHERE dms.dt &lt;= DATE(&#39;2013-04-24&#39;) 
+                                  AND dms.dt &gt; DATE(&#39;2013-04-24&#39;)  - integer &#39;14&#39;
+                                  GROUP BY b.user_id, udl.cancel_reason_code, b.total_messages_receivedTime difference of 4.924 secs
+[1] 424904      5
+SELECT b.user_id, udl.cancel_reason_code,
+                                  SUM(dms.messages_sent) as total_messages_sent,
+                                  b.total_messages_received,
+                                  COUNT(dms.dt) AS days_messaged
+                                  FROM (SELECT dmr.user_id, SUM(dmr.messages_received) as total_messages_received
+                                        FROM sandbox.daily_messages_received dmr
+                                        WHERE dmr.dt &lt;= DATE(&#39;2013-04-25&#39;) 
+                                        AND dmr.dt &gt; DATE(&#39;2013-04-25&#39;)  - integer &#39;14&#39;
+                                        GROUP BY dmr.user_id) b
+                                  INNER JOIN sandbox.daily_messages_sent dms
+                                    ON dms.user_id = b.user_id
+                                  INNER JOIN userdata_light udl
+                                    ON udl.user_id = b.user_id
+                                  WHERE dms.dt &lt;= DATE(&#39;2013-04-25&#39;) 
+                                  AND dms.dt &gt; DATE(&#39;2013-04-25&#39;)  - integer &#39;14&#39;
+                                  GROUP BY b.user_id, udl.cancel_reason_code, b.total_messages_receivedTime difference of 4.601 secs
+[1] 432605      5
+SELECT b.user_id, udl.cancel_reason_code,
+                                  SUM(dms.messages_sent) as total_messages_sent,
+                                  b.total_messages_received,
+                                  COUNT(dms.dt) AS days_messaged
+                                  FROM (SELECT dmr.user_id, SUM(dmr.messages_received) as total_messages_received
+                                        FROM sandbox.daily_messages_received dmr
+                                        WHERE dmr.dt &lt;= DATE(&#39;2013-04-26&#39;) 
+                                        AND dmr.dt &gt; DATE(&#39;2013-04-26&#39;)  - integer &#39;14&#39;
+                                        GROUP BY dmr.user_id) b
+                                  INNER JOIN sandbox.daily_messages_sent dms
+                                    ON dms.user_id = b.user_id
+                                  INNER JOIN userdata_light udl
+                                    ON udl.user_id = b.user_id
+                                  WHERE dms.dt &lt;= DATE(&#39;2013-04-26&#39;) 
+                                  AND dms.dt &gt; DATE(&#39;2013-04-26&#39;)  - integer &#39;14&#39;
+                                  GROUP BY b.user_id, udl.cancel_reason_code, b.total_messages_receivedTime difference of 4.5 secs
+[1] 438643      5
+SELECT b.user_id, udl.cancel_reason_code,
+                                  SUM(dms.messages_sent) as total_messages_sent,
+                                  b.total_messages_received,
+                                  COUNT(dms.dt) AS days_messaged
+                                  FROM (SELECT dmr.user_id, SUM(dmr.messages_received) as total_messages_received
+                                        FROM sandbox.daily_messages_received dmr
+                                        WHERE dmr.dt &lt;= DATE(&#39;2013-04-27&#39;) 
+                                        AND dmr.dt &gt; DATE(&#39;2013-04-27&#39;)  - integer &#39;14&#39;
+                                        GROUP BY dmr.user_id) b
+                                  INNER JOIN sandbox.daily_messages_sent dms
+                                    ON dms.user_id = b.user_id
+                                  INNER JOIN userdata_light udl
+                                    ON udl.user_id = b.user_id
+                                  WHERE dms.dt &lt;= DATE(&#39;2013-04-27&#39;) 
+                                  AND dms.dt &gt; DATE(&#39;2013-04-27&#39;)  - integer &#39;14&#39;
+                                  GROUP BY b.user_id, udl.cancel_reason_code, b.total_messages_receivedTime difference of 8.696 secs
+[1] 445239      5
+</code></pre>
+
+<pre><code class="r">
+
+
+# Filter the users
+users &lt;- mclapply(dms, function(i) i$user_id[i$total_messages_sent &gt;= min_messages_sent &amp; 
+                                             i$total_messages_received &gt;= min_messages_received &amp; 
+                                             i$days_messaged &gt;= min_days_messages_sent &amp; 
+                                             is.na(i$cancel_reason_code)])
+users &lt;- unique(Reduce(c, users))
+print(length(unique(users))) # This is the final answer.
+</code></pre>
+
+<pre><code>[1] 228726
+</code></pre>
+
+<pre><code class="r">
+query.check.user_id &lt;- &quot;SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= :start_date
+                        AND m.dt &lt; :end_date
+                        AND ias.session_id = m.session_id&quot;
+
+check &lt;- queryByDateRange(query.check.user_id, bottom_date, max_date)
+</code></pre>
+
+<pre><code>SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-07&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-08&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 10.77 secs
+[1] 0 0
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-08&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-09&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 30.49 secs
+[1] 4 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-09&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-10&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 11.91 secs
+[1] 0 0
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-10&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-11&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 16.49 secs
+[1] 6 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-11&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-12&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 16.31 secs
+[1] 4 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-12&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-13&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 10.99 secs
+[1] 6 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-13&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-14&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 10.52 secs
+[1] 0 0
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-14&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-15&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 10.32 secs
+[1] 2 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-15&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-16&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 11.17 secs
+[1] 0 0
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-16&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-17&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 10.74 secs
+[1] 24  5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-17&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-18&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 11.91 secs
+[1] 8 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-18&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-19&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 5.99 secs
+[1] 8 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-19&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-20&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 7.755 secs
+[1] 6 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-20&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-21&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 6.434 secs
+[1] 28  5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-21&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-22&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 10.1 secs
+[1] 8 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-22&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-23&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 5.853 secs
+[1] 12  5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-23&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-24&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 5.108 secs
+[1] 6 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-24&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-25&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 4.007 secs
+[1] 6 5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-25&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-26&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 5.32 secs
+[1] 12  5
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-26&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-27&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 4.103 secs
+[1] 0 0
+SELECT m.time_sent, m.sub_type, m.to_user_id, m.from_user_id, m.msg_id 
+                        FROM message_log m, sandbox.android_app_sessions ias
+                        WHERE (m.from_user_id = 7265644918
+                        OR m.to_user_id = 7265644918)
+                        AND m.dt &gt;= DATE(&#39;2013-04-27&#39;) 
+                        AND m.dt &lt; DATE(&#39;2013-04-28&#39;) 
+                        AND ias.session_id = m.session_idTime difference of 3.555 secs
+[1] 24  5
+</code></pre>
+
+</body>
+
+</html>
+

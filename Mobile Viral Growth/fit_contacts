@@ -1,0 +1,264 @@
+
+'starred' and 'hasPhoto' makes it much worse.
+'isFirstName' is not significant
+
+MALE & FEMALE COMBINED
+
+FAMILY + FRIEND
+Call:
+glm(formula = vote ~ areaCodeDist + callRecency + callFreq + 
+    talkTime, family = binomial("logit"))
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.7893  -1.2075   0.8736   1.1470   1.1555  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  0.0518730  0.1093904   0.474 0.635357    
+areaCodeDist 0.0093716  0.0574972   0.163 0.870525    
+callRecency  0.2433179  0.0676942   3.594 0.000325 ***
+callFreq     0.0002719  0.0038689   0.070 0.943965    
+talkTime     0.0225338  0.0096011   2.347 0.018925 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1756.8  on 1277  degrees of freedom
+Residual deviance: 1714.8  on 1273  degrees of freedom
+AIC: 1724.8
+
+Number of Fisher Scoring iterations: 6
+
+
+JUST FAMILY
+
+
+Call:
+glm(formula = vote ~ areaCodeDist + callRecency + callFreq + 
+    talkTime, family = binomial("logit"))
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.1692  -0.3474  -0.3213  -0.3131   2.4779  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  -2.777071   0.212258 -13.083  < 2e-16 ***
+areaCodeDist -0.086271   0.106727  -0.808    0.419    
+callRecency   0.478530   0.096989   4.934 8.06e-07 ***
+callFreq     -0.005001   0.004614  -1.084    0.278    
+talkTime      0.029533   0.006605   4.471 7.78e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 735.55  on 1277  degrees of freedom
+Residual deviance: 641.59  on 1273  degrees of freedom
+AIC: 651.59
+
+Number of Fisher Scoring iterations: 6
+
+
+JUST FRIEND
+
+all:
+glm(formula = vote ~ areaCodeDist + callRecency + callFreq + 
+    talkTime, family = binomial("logit"))
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-1.391  -1.131  -1.097   1.226   1.762  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)  
+(Intercept)  -0.191955   0.108435  -1.770   0.0767 .
+areaCodeDist  0.035589   0.056587   0.629   0.5294  
+callRecency   0.087156   0.063148   1.380   0.1675  
+callFreq      0.003723   0.003138   1.187   0.2354  
+talkTime     -0.013097   0.005506  -2.379   0.0174 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1767.2  on 1277  degrees of freedom
+Residual deviance: 1756.3  on 1273  degrees of freedom
+AIC: 1766.3
+
+Number of Fisher Scoring iterations: 5
+
+
+MALE ONLY
+FRIEND & FAMILY BOTH
+
+Call:
+glm(formula = vote ~ areaCodeDist + callRecency + callFreq + 
+    talkTime, family = binomial("logit"))
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.4648  -1.2213   0.7483   1.0636   1.1945  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  -0.040222   0.124601  -0.323 0.746842    
+areaCodeDist  0.158311   0.069850   2.266 0.023425 *  
+callRecency   0.349903   0.100926   3.467 0.000526 ***
+callFreq      0.012163   0.018595   0.654 0.513048    
+talkTime      0.009029   0.011822   0.764 0.445011    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1199.9  on 883  degrees of freedom
+Residual deviance: 1163.5  on 879  degrees of freedom
+AIC: 1173.5
+
+Number of Fisher Scoring iterations: 6
+
+
+JUST FRIEND
+Call:
+glm(formula = vote ~ areaCodeDist + callRecency + callFreq + 
+    talkTime, family = binomial("logit"))
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.6137  -1.1857   0.8954   1.1521   1.8602  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)   
+(Intercept)  -0.236728   0.123179  -1.922  0.05463 . 
+areaCodeDist  0.146496   0.067983   2.155  0.03117 * 
+callRecency   0.223805   0.081892   2.733  0.00628 **
+callFreq      0.005448   0.006434   0.847  0.39718   
+talkTime     -0.022178   0.009440  -2.349  0.01881 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1225.3  on 883  degrees of freedom
+Residual deviance: 1205.9  on 879  degrees of freedom
+AIC: 1215.9
+
+Number of Fisher Scoring iterations: 6
+
+
+
+JUST FAMILY
+Call:
+glm(formula = vote ~ areaCodeDist + callRecency + callFreq + 
+    talkTime, family = binomial("logit"))
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.2382  -0.3344  -0.3332  -0.3306   2.4257  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  -2.887704   0.252306 -11.445  < 2e-16 ***
+areaCodeDist  0.012293   0.131822   0.093  0.92570    
+callRecency   0.396206   0.122485   3.235  0.00122 ** 
+callFreq     -0.003783   0.005430  -0.697  0.48601    
+talkTime      0.032374   0.009978   3.245  0.00118 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 479.46  on 883  degrees of freedom
+Residual deviance: 431.52  on 879  degrees of freedom
+AIC: 441.52
+
+Number of Fisher Scoring iterations: 6
+
+
+
+
+FEMALE ONLY
+
+FRIENDS & FAMILY COMBINED
+Call:
+glm(formula = vote ~ areaCodeDist + callRecency + callFreq + 
+    talkTime, family = binomial("logit"))
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-2.393  -1.069  -1.010   1.220   1.359  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)  
+(Intercept)   0.149752   0.238867   0.627   0.5307  
+areaCodeDist -0.205123   0.112737  -1.819   0.0688 .
+callRecency   0.122332   0.110661   1.105   0.2690  
+callFreq     -0.003033   0.006024  -0.504   0.6146  
+talkTime      0.035771   0.015910   2.248   0.0246 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 545.83  on 393  degrees of freedom
+Residual deviance: 522.36  on 389  degrees of freedom
+AIC: 532.36
+
+Number of Fisher Scoring iterations: 6
+
+
+FRIENDS ONLY
+Call:
+glm(formula = vote ~ areaCodeDist + callRecency + callFreq + 
+    talkTime, family = binomial("logit"))
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.1376  -0.9915  -0.9662   1.3626   1.6594  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)
+(Intercept)  -0.246690   0.238868  -1.033    0.302
+areaCodeDist -0.089634   0.112411  -0.797    0.425
+callRecency  -0.090051   0.109828  -0.820    0.412
+callFreq      0.003752   0.004639   0.809    0.419
+talkTime     -0.005259   0.005983  -0.879    0.379
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 525.46  on 393  degrees of freedom
+Residual deviance: 522.74  on 389  degrees of freedom
+AIC: 532.74
+
+Number of Fisher Scoring iterations: 4
+
+
+FAMILY ONLY
+Call:
+glm(formula = vote ~ areaCodeDist + callRecency + callFreq + 
+    talkTime, family = binomial("logit"))
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.7862  -0.4022  -0.2959  -0.2696   2.5951  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  -2.473868   0.407771  -6.067  1.3e-09 ***
+areaCodeDist -0.317030   0.186477  -1.700 0.089112 .  
+callRecency   0.623905   0.168649   3.699 0.000216 ***
+callFreq     -0.006679   0.006960  -0.960 0.337241    
+talkTime      0.024622   0.009026   2.728 0.006374 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 254.40  on 393  degrees of freedom
+Residual deviance: 206.36  on 389  degrees of freedom
+AIC: 216.36
+
+Number of Fisher Scoring iterations: 5
